@@ -1,3 +1,4 @@
+import React, {useState} from 'react';
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
@@ -24,10 +25,21 @@ function App() {
     },
   ];
 
+  const [selectedExpenses, setSelectedExpenses] = useState(expenses);
+ 
+  const addExpenseHandler =(expenseData) =>{
+    const newExpense = {
+      ...expenseData,
+      id: Math.random(),
+    };
+    setSelectedExpenses([...selectedExpenses,newExpense]);
+    console.log(selectedExpenses);
+  }
+
   return (
     <div>
-      <NewExpense/>
-      <Expenses items={expenses}/>
+      <NewExpense onAddExpense={addExpenseHandler}/>
+      <Expenses items={selectedExpenses}/>
     </div>
   );
 }

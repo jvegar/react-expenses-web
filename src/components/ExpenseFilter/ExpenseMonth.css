@@ -1,0 +1,10 @@
+.expense-month{
+    display: flex;
+    flex-direction: column;
+}
+.expense-month__box{
+    display: flex;
+    flex-direction: column; 
+    width: 20px;
+}
+
